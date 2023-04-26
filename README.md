@@ -39,7 +39,7 @@ The different enpoints a user can interact with are the following:
 An example of retrieving a user from the CarInventory DB is with a GET request;
 
 A GET method to http://localhost:7230/user/1 will display the following JSON body:
-``rust
+```rust
 {
 "userId":1,
 "username":"johndoe",
