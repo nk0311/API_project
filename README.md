@@ -58,7 +58,7 @@ If you want to make contributions to this project you can do the following:
 
 The screenshots below show the the different requests look like:
 
-<img src="screenshot/GET.png" alt="Alt text" title="Optional title">
+<img src="Screenshot/GET.png" alt="Alt text" title="Optional title">
 
 
 
