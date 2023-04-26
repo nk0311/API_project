@@ -54,9 +54,11 @@ If you want to make contributions to this project you can do the following:
 2. Push the changes to the feature branch
 3. Create a pull request
 
-##Demo
+## Demo
 
 The screenshots below show the the different requests look like:
+
+<img src="screenshot/GET.png" alt="Alt text" title="Optional title">
 
 
 
