@@ -59,6 +59,10 @@ If you want to make contributions to this project you can do the following:
 The screenshots below show the the different requests look like:
 
 <img src="Screenshot/GET.png" alt="Alt text" title="Optional title">
+<img src="Screenshot/GET_by_id.png" alt="Alt text" title="Optional title">
+<img src="Screenshot/POST.png" alt="Alt text" title="Optional title">
+<img src="Screenshot/DELETE.png" alt="Alt text" title="Optional title">
+
 
 
 
