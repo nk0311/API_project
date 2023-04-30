@@ -1,4 +1,4 @@
-﻿<h1 align="center">Car Inventory API</h1>
+<h1 align="center">Car Inventory API</h1>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Language-Rust-orange.svg">
@@ -62,6 +62,7 @@ The screenshots below show the the different requests look like:
 <img src="Screenshot/GET_by_id.png" alt="Alt text" title="Optional title">
 <img src="Screenshot/POST.png" alt="Alt text" title="Optional title">
 <img src="Screenshot/DELETE.png" alt="Alt text" title="Optional title">
+
 
 
 
