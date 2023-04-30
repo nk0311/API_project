@@ -42,13 +42,20 @@ namespace MyFirstAPI.Controllers
             var user = await _context.Users.FindAsync(id);
             var response = new Response();
 
-            response.statusCode = 400;
+           
 
             if (user != null)
             {
                 response.statusCode = 200;
                 response.statusDescription = "Successful retrieval";
                 response.users.Add(user);
+            }
+            else
+            {
+                response.statusCode = 400;
+                response.statusDescription = "No user found";
+                return NotFound(response);
+
             }
 
             return response;
@@ -68,8 +75,11 @@ namespace MyFirstAPI.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUser(int id, User user)
         {
+            var response = new Response();
+            
             if (id != user.UserId)
             {
+                
                 return BadRequest();
             }
 
@@ -113,20 +123,28 @@ namespace MyFirstAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(int id)
         {
+            var response = new Response();
             if (_context.Users == null)
             {
-                return NotFound();
+                response.statusCode = 404;
+                response.statusDescription = "Unsuccessful deletion, no user found";
+                return NotFound(response);
             }
             var user = await _context.Users.FindAsync(id);
             if (user == null)
             {
-                return NotFound();
+                response.statusCode = 404;
+                response.statusDescription = "Unsuccessful, no user associated with that id";
+                return NotFound(response);
             }
 
             _context.Users.Remove(user);
             await _context.SaveChangesAsync();
 
-            return NoContent();
+            response.statusCode = 204;
+            response.statusDescription = "Successful deletion";
+            return Ok(response);
+            //return NoContent();
         }
 
         private bool UserExists(int id)
