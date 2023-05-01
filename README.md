@@ -10,7 +10,6 @@ The car dealership inventory API is a system designed to streamline the manageme
 
 
 ## Pre-Requisites
-- a basic understanding of the Rust programming languagw
 - A database management system such as MYSQL
 - A REST client such as Postman to test the API endpoints
 
