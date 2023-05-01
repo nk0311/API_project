@@ -35,18 +35,34 @@ namespace MyFirstAPI.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Car>> GetCar(int id)
         {
-            if (_context.Cars == null)
-            {
-                return NotFound();
-            }
+            
+            //if (_context.Cars == null)
+            //{
+               
+            //    return NotFound();
+            //}
             var car = await _context.Cars.FindAsync(id);
+            var response = new Response();
 
-            if (car == null)
+            if (car != null)
             {
-                return NotFound();
+                //return NotFound();
+                response.statusCode = 200;
+                response.statusDescription = "Successful Retrieval";
+                response.cars.Add(car);
+                return Ok(response);
+            }
+            //response.statusCode = 200;
+            //response.statusDescription = "Successsss";
+            else
+            {
+                response.statusCode = 400;
+                response.statusDescription = "No car found";
+                return NotFound(response);
             }
 
-            return car;
+            //return car;
+            //return response;
         }
 
         // PUT: api/Car/5
