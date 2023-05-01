@@ -79,8 +79,10 @@ namespace MyFirstAPI.Controllers
             
             if (id != user.UserId)
             {
+                response.statusCode = 400;
+                response.statusDescription = "Invalid user id";
                 
-                return BadRequest();
+                return BadRequest(response);
             }
 
             _context.Entry(user).State = EntityState.Modified;
@@ -93,13 +95,20 @@ namespace MyFirstAPI.Controllers
             {
                 if (!UserExists(id))
                 {
-                    return NotFound();
+                    response.statusCode = 404;
+                    response.statusDescription = "no user associated witht the id";
+                    return NotFound(response);
                 }
                 else
                 {
                     throw;
                 }
+
             }
+
+            response.statusCode = 204;
+            response.statusDescription = "user has been successfully updated";
+            return Ok(response);
 
             return NoContent();
         }
@@ -109,6 +118,8 @@ namespace MyFirstAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)
         {
+
+          var response = new Response();
           if (_context.Users == null)
           {
               return Problem("Entity set 'MyFirstAPIDBContext.Users'  is null.");
@@ -116,7 +127,11 @@ namespace MyFirstAPI.Controllers
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetUser", new { id = user.UserId }, user);
+            response.statusCode = 201;
+            response.statusDescription = "User was successfully created";
+
+            
+            return CreatedAtAction("GetUser", new { id = user.UserId }, response);
         }
 
         // DELETE: api/C/5
